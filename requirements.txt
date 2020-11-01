@@ -1,0 +1,10 @@
+fastapi==0.60.2
+uvicorn==0.11.8
+pydantic[email]==1.6.1
+alembic==1.4.2
+psycopg2==2.8.6
+SQLAlchemy==1.3.18  # 追記
+SQLAlchemy-Utils==0.36.8  # 追記
+python-dotenv==0.14.0  # 追記したらインストールする
+pytest==6.1.0  # 追記したらrequirements.txtをインストールし直すのを忘れずに
+requests==2.24.0  # 追記したら必ずrequirements.txtをインストール
