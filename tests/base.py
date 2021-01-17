@@ -18,8 +18,7 @@ test_db_connection = create_engine(
 
 class BaseTestCase:
     def setup_method(self, method):
-        """ 前処理
-        """
+        """ 前処理"""
         # テストDB作成
         self.__create_test_database()
 
@@ -33,8 +32,7 @@ class BaseTestCase:
             self.override_get_db
 
     def teardown_method(self, method):
-        """ 後処理
-        """
+        """ 後処理"""
         # テストDB削除
         self.__drop_test_database()
 
@@ -43,18 +41,15 @@ class BaseTestCase:
             get_db_session
 
     def override_get_db(self):
-        """ DBセッションの依存性オーバーライド関数
-        """
+        """ DBセッションの依存性オーバーライド関数"""
         yield self.db_session
 
     def get_test_db_session(self):
-        """ テストDBセッションを返す
-        """
+        """ テストDBセッションを返す"""
         return scoped_session(sessionmaker(bind=test_db_connection))
 
     def __create_test_database(self):
-        """ テストDB作成
-        """
+        """ テストDB作成"""
         # テストDBが削除されずに残ってしまっている場合は削除
         if database_exists(get_env().test_database_url):
             drop_database(get_env().test_database_url)
@@ -76,6 +71,5 @@ class BaseTestCase:
         Base.metadata.create_all(bind=test_db_connection)
 
     def __drop_test_database(self):
-        """ テストDB削除
-        """
+        """ テストDB削除"""
         drop_database(get_env().test_database_url)

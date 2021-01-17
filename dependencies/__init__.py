@@ -7,6 +7,5 @@ async def set_db_session_in_request(
     request: Request,
     db_session: scoped_session = Depends(get_db_session)
 ):
-    """ リクエストにDBセッションをセットする
-    """
+    """ リクエストにDBセッションをセットする"""
     request.state.db_session = db_session
