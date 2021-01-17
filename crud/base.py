@@ -29,23 +29,19 @@ class BaseCRUD:
         self.model.query = self.db_session.query_property()
 
     def get_query(self) -> query.Query:
-        """ ベースのクエリ取得
-        """
+        """ ベースのクエリ取得"""
         return self.model.query
 
     def gets(self) -> List[ModelType]:
-        """ 全件取得
-        """
+        """ 全件取得"""
         return self.get_query().all()
 
     def get_by_id(self, id: int) -> ModelType:
-        """ 主キーで取得
-        """
+        """ 主キーで取得"""
         return self.get_query().filter_by(id=id).first()
 
     def create(self, data: dict = {}) -> ModelType:
-        """ 新規登録
-        """
+        """ 新規登録"""
         obj = self.model()
         for key, value in data.items():
             if hasattr(obj, key):
@@ -56,8 +52,7 @@ class BaseCRUD:
         return obj
 
     def update(self, obj: ModelType, data: dict = {}) -> ModelType:
-        """ 更新
-        """
+        """ 更新"""
         for key, value in data.items():
             if hasattr(obj, key):
                 setattr(obj, key, value)
@@ -66,8 +61,7 @@ class BaseCRUD:
         return obj
 
     def delete_by_id(self, id: int) -> None:
-        """ 主キーで削除
-        """
+        """ 主キーで削除"""
         obj = self.get_by_id(id)
         if obj:
             obj.delete()
