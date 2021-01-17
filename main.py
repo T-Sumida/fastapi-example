@@ -1,13 +1,13 @@
 from api.endpoints.v1 import api_v1_router
 from fastapi import FastAPI
-from middleware import HttpRequestMiddleware  # 追加
+# from middleware import HttpRequestMiddleware
 
 app = FastAPI()
 
 app.include_router(api_v1_router, prefix='/api/v1')
 
 # ミドルウェアの設定
-# app.add_middleware(HttpRequestMiddleware)  # 追加
+# app.add_middleware(HttpRequestMiddleware)
 
 
 @app.get("/")
